@@ -6,7 +6,7 @@
 * @l: the list of arguments
 * Return: the width for printing
 */
-int get_wdth(constant char *fomt, int *w, va_list l)
+int get_wdth(const char *fomt, int *w, va_list l)
 {
 int wdth = 0;
 int cr_i;

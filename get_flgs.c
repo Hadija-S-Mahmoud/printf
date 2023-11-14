@@ -1,4 +1,4 @@
-nclude "main.h"
+include "main.h"
 /**
 * get_flgs - function that calculates the flags that are active
 * @f: param

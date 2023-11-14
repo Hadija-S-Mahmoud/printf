@@ -8,14 +8,14 @@
 int get_sz(const char *fomt, int *sz)
 {
 int cr_i = *sz + 1;
-int sz = 0;
+int s = 0;
 if (fomt[cr_i] == 'l')
-sz = S_LONG;
+s = S_LONG;
 else if (fomt[cr_i] == 'h')
-sz = S_SHORT;
-if (sz == 0)
+s = S_SHORT;
+if (s == 0)
 *sz = cr_i - 1;
 else
 *sz = cr_i;
-return (sz);
+return (s);
 }
