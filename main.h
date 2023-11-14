@@ -22,14 +22,14 @@
 struct fomt
 {
 char fomt;
-int (*z)(va_list, char[], int, int, int, int);
+int (*fun)(va_list, char[], int, int, int, int);
 };
 int _printf(const char *format, ...);
 void buffer_printer(char buffr[], int *buff);
-int hdle_prnt(const char *format, ...);
+int hdle_prnt(const char *fomt, ...);
 /*Specifiers handlers*/
-int get_flgs(const char *format, int *s);
-int get_wdth(const char *format, int *s, va_list list);
-int get_prcsn(const char *format, int *s, va_list list);
-int get_sz(const char *format, int *s);
+int get_flgs(const char *fomt, int *f);
+int get_wdth(const char *fomt, int *w, va_list l);
+int get_prcsn(const char *fomt, int *p, va_list l);
+int get_sz(const char *fomt, int *sz);
 #endif
