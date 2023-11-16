@@ -15,7 +15,7 @@ int hdle_prnt(const char *fomt, int *h, va_list l, char buffr[],
 int flags, int width, int precision, int size)
 {
 int k, uk_l = 0, pr_chs = -1;
-fomt_t fomt_types[] = {
+fomt_f fomt_types[] = {
 {'c', pr_ch}, {'s', pr_str}, {'%', pr_pct}, {'i', pr_int},
 {'d', pr_int}, {'b', pr_binr}, {'u', pr_unsd}, {'o', pr_octs},
 {'x', pr_hexd}, {'X', pr_hexu}, {'p', pr_pot}, {'S', pr_nprt},

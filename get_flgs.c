@@ -12,7 +12,7 @@ int get_flgs(const char *fomt, int *f)
 int o, cr_i;
 int flgs = 0;
 const char FLGS_C[] = {'-', '+', '0', '#', ' ', '\0'};
-const int FLGS_A[] = {F_MINUS, F_PLUS, F_HASH, F_SPACE, F_ZERO, 0};
+const int FLGS_A[] = {F_M, F_P, F_H, F_S, F_Z, 0};
 for (cr_i = *f + 1; fomt[cr_i] != '\0'; cr_i++)
 {
 for (o = 0; FLGS_C[o] != '\0'; o++)

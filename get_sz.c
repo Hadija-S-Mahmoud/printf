@@ -10,9 +10,9 @@ int get_sz(const char *fomt, int *sz)
 int cr_i = *sz + 1;
 int s = 0;
 if (fomt[cr_i] == 'l')
-s = S_LONG;
+s = S_L;
 else if (fomt[cr_i] == 'h')
-s = S_SHORT;
+s = S_S;
 if (s == 0)
 *sz = cr_i - 1;
 else
