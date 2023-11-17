@@ -11,7 +11,8 @@
  * @size: specification forsize
  * Return: Number of characters printed
  */
-int pr_unsd (ca_list t, char buffr, int flags, int width, int precision, int size)
+int pr_unsd(va_list t, char buffr[], int flags,
+int width, int precision, int size)
 {
 	int g = B_SIZE - 2;
 	unsigned long int nom = va_arg(t, unsigned long int);
@@ -47,9 +48,10 @@ int pr_unsd (ca_list t, char buffr, int flags, int width, int precision, int siz
  * @size: specification for size
  * Return: Number of characters printed
  */
-int pr_octs(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_octs(va_list t, char buffr[],
+int flags, int width, int precision, int size)
 {
-	int v = B_size - 2;
+	int v = B_SIZE - 2;
 	unsigned long int num = va_arg(t, unsigned long int);
 	unsigned long int int_num = num;
 
@@ -68,8 +70,8 @@ int pr_octs(va_list t, char buffr, int flags, int width, int precision, int size
 		num /= 8;
 	}
 
-	if (flags & F_H && i_num != 0)
-		buffr[i--] = '0';
+	if (flags & F_H && int_num != 0)
+		buffr[v--] = '0';
 
 	v++;
 	return (wrt_unsd(0, v, buffr, flags, width, precision, size));
@@ -88,15 +90,18 @@ int pr_octs(va_list t, char buffr, int flags, int width, int precision, int size
  * @size: specification for size
  * Return: Number of characters printed
  */
-int pr_hexd(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_hexd(va_list t, char buffr[],
+int flags, int width, int precision, int size)
 {
-	return (pr_hex(t, "0123456789abcdef", buffr, flags, 'x', width, precision, size));
+	return (pr_hex(t, "0123456789abcdef", buffr, flags,
+'x', width, precision, size));
 }
 
-/********** PRINTING AN UNSIGNED NUMBER THAT IS IN UPPER HEXADECIMAL **********/
+/***** PRINTING AN UNSIGNED NUMBER THAT IS IN UPPER HEXADECIMAL *****/
 
 /**
- * pr_hexu - Function that prints an unsigned number that is in upper hexadecimal
+ * pr_hexu - Function that prints an unsigned number
+ * that is in upper hexadecimal
  * @t: A list of arguments
  * @buffr: Array of buffer
  * @flags: calculating the active flags
@@ -105,15 +110,18 @@ int pr_hexd(va_list t, char buffr, int flags, int width, int precision, int size
  * @size: specification for size
  * Return: Number of characters printed
  */
-int pr_hexu(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_hexu(va_list t, char buffr[],
+int flags, int width, int precision, int size)
 {
-	return (pr_hex(t, "0123456789ABCDEF", buffr, flags, 'X', width, precision, size));
+	return (pr_hex(t, "0123456789ABCDEF", buffr,
+flags, 'X', width, precision, size));
 }
 
-/********** PRINTING HEXADECIMAL NUMBER IN LOWER OR UPPER NOTATION **********/
+/**** PRINTING HEXADECIMAL NUMBER IN LOWER OR UPPER NOTATION ****/
 
 /**
- *pr_hex - Function that prints a hexadecimal number in lower and upper notation
+ *pr_hex - Function that prints a hexadecimal number in
+ *`lower and upper notation
  * @t: A list of arguments
  * @mp_to: Array of values to map the number to
  * @buffr: Array of buffer
@@ -124,7 +132,8 @@ int pr_hexu(va_list t, char buffr, int flags, int width, int precision, int size
  * @size: specification for size
  * Return: Number of characters printed
  */
-int pr_hex(va_list t, char mp_to, char buffr, int flags, char flg_ch, int width, int precision, int size)
+int pr_hex(va_list t, char mp_to[], char buffr[],
+int flags, char flg_ch, int width, int precision, int size)
 {
 	int u = B_SIZE - 2;
 	unsigned long int num = va_arg(t, unsigned long int);
@@ -155,30 +164,3 @@ int pr_hex(va_list t, char mp_to, char buffr, int flags, char flg_ch, int width,
 	return (wrt_unsd(0, u, buffr, flags, width, precision, size));
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

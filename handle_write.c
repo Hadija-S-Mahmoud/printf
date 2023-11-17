@@ -131,8 +131,7 @@ return (write(1, &buffr[inx], lgt));
 * @size: specification for size
 * @precision: precision specifier
 * @width: the width specifier
-*
-* @Return: the number of written characters
+* Return: the number of written characters
 */
 int wrt_unsd(int is_negt, int inx, char buffr[], int flags,
 int width, int precision, int size)
@@ -177,7 +176,7 @@ return (write(1, &buffr[inx], lgt));
 * @lgt: the length of the number
 * @inx: the index at which the number begins in the buffer
 * @buffr: an array of characters
-* @Return: number of written characters
+* Return: number of written characters
 */
 int wrt_pot(char buffr[], int inx, int lgt, int width,
 int flags, char pd, char ext_char, int pd_st)

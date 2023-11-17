@@ -10,7 +10,7 @@ int get_wdth(const char *fomt, int *w, va_list l)
 {
 int wdth = 0;
 int cr_i;
-for (cr_i = *w + 1; fomt[cr_1] != '\0'; cr_i++)
+for (cr_i = *w + 1; fomt[cr_i] != '\0'; cr_i++)
 {
 if (is_dgt(fomt[cr_i]))
 {

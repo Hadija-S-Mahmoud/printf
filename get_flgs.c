@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 /**
 * get_flgs - function that calculates the flags that are active
 * @f: param
@@ -18,12 +18,12 @@ for (cr_i = *f + 1; fomt[cr_i] != '\0'; cr_i++)
 for (o = 0; FLGS_C[o] != '\0'; o++)
 if (fomt[cr_i] == FLGS_C[o])
 {
-flags |= FLGS_A[o];
+flgs |= FLGS_A[o];
 break;
 }
 if (FLGS_C[o] == 0)
 break;
 }
 *f = cr_i - 1;
-return (flags);
+return (flgs);
 }

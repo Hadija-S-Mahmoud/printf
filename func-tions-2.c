@@ -11,12 +11,13 @@
  * @size:specification for size
  * Return: Number of characters printed.
  */
-int pr_pot(va_list t, char buffr, int flags, int width, int precision)
+int pr_pot(va_list t, char buffr[], int flags,
+int width, int precision, int size)
 {
-	char ext_char = 0, pd = '';
+	char ext_char = 0, pd = ' ';
 	int inx = B_SIZE - 2, lgt = 2, pd_st = 1;
 	unsigned long num_ads;
-	char mp_to = "0123456789abcdef";
+	char mp_to[] = "0123456789abcdef";
 	void *ads = va_arg(t, void *);
 
 	UNUSD(width);
@@ -31,9 +32,9 @@ int pr_pot(va_list t, char buffr, int flags, int width, int precision)
 
 	while (num_ads > 0)
 	{
-		buffr[inx--] = mo_to[num_ads % 16];
+		buffr[inx--] = mp_to[num_ads % 16];
 		num_ads /= 16;
-		lgt++
+		lgt++;
 	}
 
 	if ((flags & F_Z) && !(flags & F_M))
@@ -41,7 +42,7 @@ int pr_pot(va_list t, char buffr, int flags, int width, int precision)
 	if (flags & F_P)
 		ext_char = '+', lgt++;
 	else if (flags & F_S)
-		ext_chart = '', lgt++;
+		ext_char = ' ', lgt++;
 
 	inx++;
 
@@ -51,7 +52,8 @@ int pr_pot(va_list t, char buffr, int flags, int width, int precision)
 /*********** PRINTING NON-PRINTABLE CHARACTERS **********/
 
 /**
- * pr_nprt - Function that prints ascii codes in hex or non-printable characters
+ * pr_nprt - Function that prints ascii codes
+ * in hex or non-printable characters
  * @t:list of arguments
  * @buffr: array of buffer
  * @flags: calculating the flags that are active
@@ -60,7 +62,8 @@ int pr_pot(va_list t, char buffr, int flags, int width, int precision)
  * @size:specification for size
  * Return: Number of characters printed.
  */
-int pr_nprt(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_nprt(va_list t, char buffr[], int flags,
+int width, int precision, int size)
 {
 	int y = 0, offs = 0;
 	char *strg = va_arg(t, char *);
@@ -99,7 +102,8 @@ int pr_nprt(va_list t, char buffr, int flags, int width, int precision, int size
  * @size:specification for size
  * Return: Number of characters printed.
  */
-int pr_revs(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_revs(va_list t, char buffr[], int flags,
+int width, int precision, int size)
 {
 	char *strg;
 	int i, cnt = 0;
@@ -127,7 +131,7 @@ int pr_revs(va_list t, char buffr, int flags, int width, int precision, int size
 		write(1, &l, 1);
 		cnt++;
 	}
-	retur n(cnt);
+	return (cnt);
 }
 
 /********** PRINTING A STRING IN ROT **********/
@@ -142,14 +146,15 @@ int pr_revs(va_list t, char buffr, int flags, int width, int precision, int size
  * @size:specification for size
  * Return: Number of characters printed.
  */
-int pr_rot(va_list t, char buffr, int flags, int width, int precision, int size)
+int pr_rot(va_list t, char buffr[], int flags,
+int width, int precision, int size)
 {
 	char x;
 	char *strg;
 	unsigned int m, n;
 	int cnt = 0;
-	char in = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char out = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	strg = va_arg(t, char *);
 	UNUSD(buffr);
@@ -172,41 +177,12 @@ int pr_rot(va_list t, char buffr, int flags, int width, int precision, int size)
 				break;
 			}
 		}
-		if (!n[n])
+		if (!in[n])
 		{
 			x = strg[m];
 			write(1, &x, 1);
-			cnt++
+			cnt++;
 		}
 	}
 	return (cnt);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
